@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+}
+
+#info {
+    width: 100%;
+    text-align: center;
+    color: aliceblue;
+    position: absolute;
+    top: 15px;
+}
+
+#download {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+#container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 16px;
+    border-radius: 8px;
+    border: 1px solid #8E71C7;
+    overflow: hidden;
+}
+
+#per {
+    height: 100%;
+    width: 0px;
+    background: #8E71C7;
+    color: #8E71C7;
+    line-height: 15px;
+}
