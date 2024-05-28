@@ -1,13 +1,15 @@
-import { DirectionalLight } from 'three';
+import { HemisphereLight, DirectionalLight } from 'three';
 
 function createLights() {
+    const ambientLight = new HemisphereLight('white', 'darkslategrey', 5);
+
     // 创建灯光对象
-    const light = new DirectionalLight('white', 8);
+    const mainLight = new DirectionalLight('white', 8);
 
     // 改变照射方向
-    light.position.set(10, 10, 10);
+    mainLight.position.set(10, 10, 10);
 
-    return light;
+    return { ambientLight, mainLight };
 }
 
 export { createLights };

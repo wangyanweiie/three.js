@@ -6,6 +6,7 @@ import { createScene } from './components/scene.js';
 import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
+import { createControls } from './systems/controls.js';
 
 let camera;
 let renderer;
@@ -28,14 +29,17 @@ class World {
         // 当我们创建渲染器时，<canvas> 元素也会被创建并存储在 renderer.domElement 中，将其添加到容器中。
         container.append(renderer.domElement);
 
+        const controls = createControls(camera, renderer.domElement);
+
         const cube = createCube();
-        const light = createLights();
+        const { ambientLight, mainLight } = createLights();
 
         // 将立方体添加到 updatables 数组中，以便在每次帧时更新它
-        loop.updatables.push(cube);
+        // loop.updatables.push(cube);
+        loop.updatables.push(controls);
 
         // 将立方体与光照添加到场景中
-        scene.add(cube, light);
+        scene.add(cube, ambientLight, mainLight);
 
         // 创建一个 Resizer 类，该类将监听窗口调整大小事件，并在发生调整时生成一个新帧
         const resizer = new Resizer(container, camera, renderer);
