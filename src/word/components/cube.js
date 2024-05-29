@@ -14,7 +14,7 @@ function createMaterial() {
 }
 
 function createCube() {
-    // 创建几何体对象
+    // 创建矩形几何体对象
     const geometry = new BoxGeometry(2, 2, 2);
 
     /**
@@ -28,6 +28,7 @@ function createCube() {
     // 创建网格对象
     const cube = new Mesh(geometry, material);
 
+    // 添加一个 tick 方法，该方法将在每个帧调用
     const radiansPerSecond = MathUtils.degToRad(30);
     cube.tick = delta => {
         cube.rotation.z += radiansPerSecond * delta;

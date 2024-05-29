@@ -13,7 +13,7 @@ class Loop {
     }
 
     /**
-     * 启动动画
+     * 开启动画
      */
     start() {
         this.renderer.setAnimationLoop(() => {
