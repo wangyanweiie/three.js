@@ -10,14 +10,17 @@ async function loadBirds() {
         loader.loadAsync('/assets/models/Stork.glb'),
     ]);
 
+    // 鹦鹉
     const parrot = setupModel(parrotData);
     parrot.position.set(0, 0, 0);
     parrot.scale.set(0.5, 0.5, 0.5);
 
+    // 火烈鸟
     const flamingo = setupModel(flamingoData);
     flamingo.position.set(2.5, 0, -5);
     flamingo.scale.set(0.5, 0.5, 0.5);
 
+    // 鹤
     const stork = setupModel(storkData);
     stork.position.set(-2.5, 0, -2.5);
     stork.scale.set(0.5, 0.5, 0.5);
