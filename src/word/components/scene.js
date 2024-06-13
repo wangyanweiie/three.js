@@ -5,7 +5,7 @@ function createScene() {
     const scene = new Scene();
 
     // 设置场景背景颜色
-    scene.background = new Color('#F1F4F9');
+    scene.background = new Color('#87CEEB');
 
     return scene;
 }

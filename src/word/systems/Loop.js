@@ -17,7 +17,10 @@ class Loop {
      */
     start() {
         this.renderer.setAnimationLoop(() => {
+            // 需要在每一帧开始时运行
             this.tick();
+
+            // 渲染场景
             this.renderer.render(this.scene, this.camera);
         });
     }

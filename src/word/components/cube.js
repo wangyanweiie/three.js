@@ -28,8 +28,10 @@ function createCube() {
     // 创建网格对象
     const cube = new Mesh(geometry, material);
 
-    // 添加一个 tick 方法，该方法将在每个帧调用
+    // degToRad 将度数转换为弧度
     const radiansPerSecond = MathUtils.degToRad(30);
+
+    // 添加一个 tick 方法，该方法将在每个帧调用
     cube.tick = delta => {
         cube.rotation.z += radiansPerSecond * delta;
         cube.rotation.x += radiansPerSecond * delta;

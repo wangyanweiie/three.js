@@ -1,9 +1,10 @@
 import { createCamera } from './components/camera.js';
 import { createScene } from './components/scene.js';
 import { createLights } from './components/lights.js';
-// import { createCube } from './components/cube.js';
-// import { createMeshGroup } from './components/meshGroup.js';
-// import { Train } from './components/Train/Train.js';
+
+import { createCube } from './components/cube.js';
+import { createMeshGroup } from './components/meshGroup.js';
+import { Train } from './components/Train/Train.js';
 import { loadBirds } from './components/birds/birds.js';
 
 import { createRenderer } from './systems/renderer.js';
@@ -40,40 +41,44 @@ class World {
         const { ambientLight, mainLight } = createLights();
 
         /**
-         * 1.普通网格
+         *************** 1.普通网格 ***************
          */
         // 创建网格对象
         // const cube = createCube;
+
         // 将网格对象添加到 updatables 数组中，以便在每次帧时更新它
         // loop.updatables.push(cube);
-        // 将网格对象与光照添加到场景中
+
+        // 将网格对象与光照添加到场景中，我们可以添加任意数量的对象，用逗号分隔
         // scene.add(cube, ambientLight, mainLight);
 
+        // 创建一个 Resizer 类，该类将监听窗口调整大小事件，并在发生调整时生成一个新帧
+        const resizer = new Resizer(container, camera, renderer);
+
+        // 现在循环正在运行，每当我们调整窗口大小时，都会在循环的下一次迭代中生成一个新帧。这足够快，您不会注意到任何延迟，因此我们不再需要在调整大小时手动重绘场景
+        // resizer.onResize = () => {
+        //     this.render();
+        // };
+
         /**
-         * 2.组
+         *************** 2.组 ***************
          */
         // const meshGroup = createMeshGroup();
         // loop.updatables.push(controls, meshGroup);
         // scene.add(meshGroup, ambientLight, mainLight);
 
         /**
-         * 3.火车
+         *************** 3.火车 ***************
          */
         // const train = new Train();
         // loop.updatables.push(controls, train);
         // scene.add(train, ambientLight, mainLight);
 
         /**
-         * 4.GLTF
+         *************** 4.GLTF ***************
          */
         loop.updatables.push(controls);
         scene.add(ambientLight, mainLight);
-
-        // 创建一个 Resizer 类，该类将监听窗口调整大小事件，并在发生调整时生成一个新帧
-        const resizer = new Resizer(container, camera, renderer);
-        // resizer.onResize = () => {
-        //     this.render();
-        // };
     }
 
     /**

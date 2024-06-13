@@ -5,10 +5,10 @@ const setSize = (container, camera, renderer) => {
     // 如果相机的一些属性发生了变化，需要执行 updateProjectionMatrix() 方法更新相机的投影矩阵数学对象
     camera.updateProjectionMatrix();
 
-    // 设置输出画布的尺寸（单位: 像素 px）
+    // 设置渲染器的大小（单位: 像素 px）
     renderer.setSize(container.clientWidth, container.clientHeight);
 
-    // 设置屏幕设备像素比，以免渲染模糊问题
+    // 设置屏幕设备像素比，这是防止 HiDPI 显示器模糊所必需的 （也称为视网膜显示器）
     renderer.setPixelRatio(window.devicePixelRatio);
 };
 
@@ -16,14 +16,14 @@ class Resizer {
     constructor(container, camera, renderer) {
         setSize(container, camera, renderer);
 
+        // 添加一个事件侦听器并在事件触发时再次调用 setSize
         window.addEventListener('resize', () => {
             setSize(container, camera, renderer);
-
-            // 在发生调整时执行一些自定义行为
             this.onResize();
         });
     }
 
+    // onResize 是一个空方法，我们可以从 Resizer 类的外部自定义
     onResize() {}
 }
 
